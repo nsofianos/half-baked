@@ -3,9 +3,11 @@
   align-items: center;
   flex-direction: column;
   width: 50%;
-  background-color: #ffffff;
   height: 80vh;
   margin: auto;
-  border-radius: 30px;
-  box-shadow: 0 0 20px #ececec;
+  position: relative;
+  top: 5rem;
+}
+
+.MuiPaper-rounded {
 }

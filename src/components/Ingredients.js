@@ -1,8 +1,20 @@
+import { TextField } from "@mui/material";
 function Ingredients() {
   return (
     <div className="ingredients">
-      <textarea placeholder="Paste recipe here"></textarea>
-      <textarea placeholder="converted measurements"></textarea>
+      <TextField
+        id="outlined-basic"
+        label="Recipe"
+        multiline
+        variant="outlined"
+        placeholder="paste recipe here"
+      />
+      <TextField
+        id="outlined-basic"
+        label="Converted"
+        multiline
+        variant="outlined"
+      />
     </div>
   );
 }

@@ -1,12 +1,16 @@
 import Button from "@mui/material/Button";
+import ToggleButton from "@mui/material/ToggleButton";
+import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 
 function Divider() {
   return (
     <div className="divider">
-      <Button variant="contained">Half</Button>
-      <Button variant="contained">Third</Button>
-      <Button variant="contained">Quarter</Button>
-      <Button variant="contained">Eighth</Button>
+      <ToggleButtonGroup>
+        <ToggleButton variant="contained">Half</ToggleButton>
+        <ToggleButton variant="contained">Third</ToggleButton>
+        <ToggleButton variant="contained">Quarter</ToggleButton>
+        <ToggleButton variant="contained">Eighth</ToggleButton>
+      </ToggleButtonGroup>
     </div>
   );
 }
