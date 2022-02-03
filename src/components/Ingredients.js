@@ -6,14 +6,18 @@ function Ingredients() {
         id="outlined-basic"
         label="Recipe"
         multiline
-        variant="outlined"
+        variant="standard"
         placeholder="paste recipe here"
       />
       <TextField
         id="outlined-basic"
         label="Converted"
         multiline
-        variant="outlined"
+        disabled
+        variant="standard"
+        InputProps={{
+          readOnly: true,
+        }}
       />
     </div>
   );

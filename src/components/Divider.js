@@ -6,10 +6,18 @@ function Divider() {
   return (
     <div className="divider">
       <ToggleButtonGroup>
-        <ToggleButton variant="contained">Half</ToggleButton>
-        <ToggleButton variant="contained">Third</ToggleButton>
-        <ToggleButton variant="contained">Quarter</ToggleButton>
-        <ToggleButton variant="contained">Eighth</ToggleButton>
+        <ToggleButton value="half" variant="contained">
+          Half
+        </ToggleButton>
+        <ToggleButton value="third" variant="contained">
+          Third
+        </ToggleButton>
+        <ToggleButton value="quarter" variant="contained">
+          Quarter
+        </ToggleButton>
+        <ToggleButton value="eighth" variant="contained">
+          Eighth
+        </ToggleButton>
       </ToggleButtonGroup>
     </div>
   );
