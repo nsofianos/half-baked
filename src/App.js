@@ -1,5 +1,4 @@
 import Adjuster from "./components/Adjuster";
-import Divider from "./components/Divider";
 import "./App.css";
 import RestaurantMenuIcon from "@mui/icons-material/RestaurantMenu";
 import {
@@ -39,7 +38,6 @@ function App() {
               </Typography>
             </Box>
             <Adjuster />
-            <Divider />
             <Grid
               container
               spacing={2}
