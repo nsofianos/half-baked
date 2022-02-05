@@ -3,40 +3,61 @@ import Divider from "./components/Divider";
 import Ingredients from "./components/Ingredients";
 import "./App.css";
 import RestaurantMenuIcon from "@mui/icons-material/RestaurantMenu";
-import { Paper, Grid, Container, CssBaseline } from "@mui/material";
+import {
+  Paper,
+  Grid,
+  Container,
+  CssBaseline,
+  Box,
+  Typography,
+} from "@mui/material";
 
 function App() {
   return (
-    <CssBaseline>
-      <Container component="main" maxWidth="lg" sx={{ mt: 5, mb: 5 }}>
-        <Paper
-          elevation={3}
+    <Container component="main" maxWidth="sm" sx={{ mt: 10, mb: 5 }}>
+      <CssBaseline>
+        <Box
           sx={{
-            p: 2,
             display: "flex",
             flexDirection: "column",
-            height: "50%",
-            width: "50%",
+            alignItems: "center",
           }}
         >
-          <Grid
-            container
-            spacing={2}
-            alignItems="center"
-            justifyContent="center"
+          <Paper
+            elevation={3}
+            sx={{
+              alignItems: "center",
+              p: 2,
+              display: "flex",
+              flexDirection: "column",
+            }}
           >
-            <Grid item xs={12}>
+            <Box sx={{ display: "flex" }}>
               <RestaurantMenuIcon fontSize="large" />
+              <Typography variant="h6" gutterBottom>
+                Half Baked
+              </Typography>
+            </Box>
+            <Grid
+              container
+              spacing={2}
+              alignItems="center"
+              justifyContent="center"
+            >
+              <Grid item xs={6}>
+                <Adjuster />
+              </Grid>
+              <Grid item xs={6}>
+                <Divider />
+              </Grid>
+              <Grid item xs={6}>
+                <Ingredients />
+              </Grid>
             </Grid>
-            <Grid item xs={6}>
-              <Adjuster />
-            </Grid>
-          </Grid>
-          <Divider />
-          <Ingredients />
-        </Paper>
-      </Container>
-    </CssBaseline>
+          </Paper>
+        </Box>
+      </CssBaseline>
+    </Container>
   );
 }
 
