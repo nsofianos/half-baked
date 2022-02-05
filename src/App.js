@@ -1,6 +1,5 @@
 import Adjuster from "./components/Adjuster";
 import Divider from "./components/Divider";
-import Ingredients from "./components/Ingredients";
 import "./App.css";
 import RestaurantMenuIcon from "@mui/icons-material/RestaurantMenu";
 import {
@@ -10,6 +9,7 @@ import {
   CssBaseline,
   Box,
   Typography,
+  TextField,
 } from "@mui/material";
 
 function App() {
@@ -32,12 +32,14 @@ function App() {
               flexDirection: "column",
             }}
           >
-            <Box sx={{ display: "flex" }}>
-              <RestaurantMenuIcon fontSize="large" />
+            <Box sx={{ display: "flex", m: 2 }}>
+              <RestaurantMenuIcon sx={{ mr: 1 }} fontSize="large" />
               <Typography variant="h6" gutterBottom>
                 Half Baked
               </Typography>
             </Box>
+            <Adjuster />
+            <Divider />
             <Grid
               container
               spacing={2}
@@ -45,13 +47,25 @@ function App() {
               justifyContent="center"
             >
               <Grid item xs={6}>
-                <Adjuster />
+                <TextField
+                  id="outlined-basic"
+                  label="Recipe"
+                  multiline
+                  variant="standard"
+                  placeholder="paste recipe here"
+                />
               </Grid>
               <Grid item xs={6}>
-                <Divider />
-              </Grid>
-              <Grid item xs={6}>
-                <Ingredients />
+                <TextField
+                  id="outlined-basic"
+                  label="Converted"
+                  multiline
+                  disabled
+                  variant="standard"
+                  InputProps={{
+                    readOnly: true,
+                  }}
+                />
               </Grid>
             </Grid>
           </Paper>
