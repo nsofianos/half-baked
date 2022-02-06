@@ -1,5 +1,6 @@
 import Adjuster from "./components/Adjuster";
 import "./App.css";
+import { useState } from "react";
 import RestaurantMenuIcon from "@mui/icons-material/RestaurantMenu";
 import {
   Paper,
@@ -12,6 +13,11 @@ import {
 } from "@mui/material";
 
 function App() {
+  const [currentRecipe, setCurrentRecipe] = useState("");
+  const recipeChangeHandler = (event) => {
+    setCurrentRecipe(event.target.value);
+  };
+
   return (
     <Container component="main" maxWidth="sm" sx={{ mt: 10, mb: 5 }}>
       <CssBaseline>
@@ -46,23 +52,24 @@ function App() {
             >
               <Grid item xs={6}>
                 <TextField
-                  id="outlined-basic"
-                  label="Recipe"
+                  id="pasted-recipe"
                   multiline
                   variant="standard"
                   placeholder="paste recipe here"
+                  onChange={recipeChangeHandler}
                 />
               </Grid>
               <Grid item xs={6}>
                 <TextField
-                  id="outlined-basic"
-                  label="Converted"
+                  id="converted-recipe"
+                  placeholder="converted"
                   multiline
                   disabled
                   variant="standard"
                   InputProps={{
                     readOnly: true,
                   }}
+                  value={currentRecipe}
                 />
               </Grid>
             </Grid>
