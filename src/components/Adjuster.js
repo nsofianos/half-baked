@@ -1,15 +1,15 @@
 import "./Adjuster.css";
 import { useState } from "react";
-import ToggleButton from "@mui/material/ToggleButton";
+import { ToggleButton, Box } from "@mui/material";
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 import Divider from "./Divider";
-import { Button } from "@mui/material";
+import Multiplier from "./Multiplier";
 
 function Adjuster() {
   const [adjuster, setAdjuster] = useState("divide");
 
   const handleAdjuster = (e, newAdjuster) => {
-    setAdjuster(newAdjuster);
+    if (newAdjuster !== null) setAdjuster(newAdjuster);
   };
 
   //determine which adjuster component to display (multiply/divide)
@@ -18,12 +18,15 @@ function Adjuster() {
   };
 
   return (
-    <div className="adjuster">
+    <Box
+      sx={{ display: "flex", flexDirection: "column", alignItems: "center" }}
+    >
       <ToggleButtonGroup
         color="primary"
         onChange={handleAdjuster}
         exclusive
         value={adjuster}
+        sx={{ m: 2 }}
       >
         <ToggleButton value="divide" aria-label="divided">
           Divide
@@ -33,7 +36,7 @@ function Adjuster() {
         </ToggleButton>
       </ToggleButtonGroup>
       {getAdjuster(adjuster)}
-    </div>
+    </Box>
   );
 }
 
