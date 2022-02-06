@@ -13,11 +13,20 @@ import {
 } from "@mui/material";
 
 function App() {
-  const [currentRecipe, setCurrentRecipe] = useState("");
-  const recipeChangeHandler = (event) => {
-    setCurrentRecipe(event.target.value);
+  const [convertedRecipe, setConvertedRecipe] = useState("");
+  const [adjuster, setAdjuster] = useState("divide");
+
+  const adjusterHandler = (event, newAdjuster) => {
+    if (newAdjuster !== null) setAdjuster(newAdjuster);
   };
 
+  const recipeChangeHandler = (event) => {
+    setConvertedRecipe(convertRecipe(event.target.value));
+  };
+
+  const convertRecipe = (recipe) => {
+    return recipe;
+  };
   return (
     <Container component="main" maxWidth="sm" sx={{ mt: 10, mb: 5 }}>
       <CssBaseline>
@@ -43,7 +52,10 @@ function App() {
                 Half Baked
               </Typography>
             </Box>
-            <Adjuster />
+            <Adjuster
+              currentAdjuster={adjuster}
+              onChangeAdjuster={adjusterHandler}
+            />
             <Grid
               container
               spacing={2}
@@ -69,7 +81,7 @@ function App() {
                   InputProps={{
                     readOnly: true,
                   }}
-                  value={currentRecipe}
+                  value={convertedRecipe}
                 />
               </Grid>
             </Grid>

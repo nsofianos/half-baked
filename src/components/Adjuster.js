@@ -5,14 +5,8 @@ import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 import Divider from "./Divider";
 import Multiplier from "./Multiplier";
 
-function Adjuster() {
-  const [adjuster, setAdjuster] = useState("divide");
-
-  const handleAdjuster = (e, newAdjuster) => {
-    if (newAdjuster !== null) setAdjuster(newAdjuster);
-  };
-
-  //determine which adjuster component to display (multiply/divide)
+function Adjuster(props) {
+  //determine which adjuster component to display
   const getAdjuster = (adjuster) => {
     return adjuster === "divide" ? <Divider /> : <Multiplier />;
   };
@@ -23,9 +17,9 @@ function Adjuster() {
     >
       <ToggleButtonGroup
         color="primary"
-        onChange={handleAdjuster}
+        onChange={props.onChangeAdjuster}
         exclusive
-        value={adjuster}
+        value={props.currentAdjuster}
         sx={{ m: 2 }}
       >
         <ToggleButton value="divide" aria-label="divided">
@@ -35,7 +29,7 @@ function Adjuster() {
           Multiply
         </ToggleButton>
       </ToggleButtonGroup>
-      {getAdjuster(adjuster)}
+      {getAdjuster(props.currentAdjuster)}
     </Box>
   );
 }
