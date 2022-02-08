@@ -31,7 +31,13 @@ function App() {
   };
 
   const convertRecipe = (recipe) => {
-    return recipe;
+    let convertedRecipe = "";
+    for (let i = 0; i < recipe.length; i++) {
+      parseInt(recipe.charAt(i))
+        ? (convertedRecipe += parseInt(recipe.charAt(i)) * multiplier)
+        : (convertedRecipe += recipe.charAt(i));
+    }
+    return convertedRecipe;
   };
   return (
     <Container component="main" maxWidth="sm" sx={{ mt: 10, mb: 5 }}>
