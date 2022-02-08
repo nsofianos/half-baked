@@ -23,7 +23,7 @@ function App() {
   };
 
   const multiplierChangeHandler = (event, newMultiplier) => {
-    setMultiplier(newMultiplier);
+    if (newMultiplier !== null) setMultiplier(newMultiplier);
   };
 
   const recipeChangeHandler = (event) => {
@@ -60,6 +60,7 @@ function App() {
             </Box>
             <Adjuster
               currentAdjuster={adjuster}
+              currentMultiplier={multiplier}
               onAdjusterChange={adjusterHandler}
               onMultiplierChange={multiplierChangeHandler}
             />

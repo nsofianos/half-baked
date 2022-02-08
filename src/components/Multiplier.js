@@ -6,8 +6,10 @@ function Multiplier(props) {
     <div className="multiplier">
       <ToggleButtonGroup
         color="primary"
+        exclusive
         sx={{ m: 2 }}
         onChange={props.onMultiplierChange}
+        value={props.currentMultiplier}
       >
         <ToggleButton value={1.5} variant="contained">
           1.5

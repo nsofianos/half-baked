@@ -6,11 +6,17 @@ import Multiplier from "./Multiplier";
 
 function Adjuster(props) {
   //determine which adjuster component to display
-  const getAdjuster = (adjuster, multiplierChange) => {
+  const getAdjuster = (adjuster, multiplier, multiplierChange) => {
     return adjuster === "divide" ? (
-      <Divider onMultiplierChange={multiplierChange} />
+      <Divider
+        currentMultiplier={multiplier}
+        onMultiplierChange={multiplierChange}
+      />
     ) : (
-      <Multiplier onMultiplierChange={multiplierChange} />
+      <Multiplier
+        currentMultiplier={multiplier}
+        onMultiplierChange={multiplierChange}
+      />
     );
   };
 
@@ -32,7 +38,11 @@ function Adjuster(props) {
           Multiply
         </ToggleButton>
       </ToggleButtonGroup>
-      {getAdjuster(props.currentAdjuster, props.onMultiplierChange)}
+      {getAdjuster(
+        props.currentAdjuster,
+        props.currentMultiplier,
+        props.onMultiplierChange
+      )}
     </Box>
   );
 }

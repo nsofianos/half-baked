@@ -8,6 +8,7 @@ function Divider(props) {
       exclusive
       sx={{ m: 2 }}
       onChange={props.onMultiplierChange}
+      value={props.currentMultiplier}
     >
       <ToggleButton value={0.5} variant="contained">
         Half
