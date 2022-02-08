@@ -15,9 +15,15 @@ import {
 function App() {
   const [convertedRecipe, setConvertedRecipe] = useState("");
   const [adjuster, setAdjuster] = useState("divide");
+  const [multiplier, setMultiplier] = useState(0.5);
 
+  //divide/multiply toggle
   const adjusterHandler = (event, newAdjuster) => {
     if (newAdjuster !== null) setAdjuster(newAdjuster);
+  };
+
+  const multiplierChangeHandler = (event, newMultiplier) => {
+    setMultiplier(newMultiplier);
   };
 
   const recipeChangeHandler = (event) => {
@@ -54,7 +60,8 @@ function App() {
             </Box>
             <Adjuster
               currentAdjuster={adjuster}
-              onChangeAdjuster={adjusterHandler}
+              onAdjusterChange={adjusterHandler}
+              onMultiplierChange={multiplierChangeHandler}
             />
             <Grid
               container

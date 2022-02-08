@@ -1,5 +1,4 @@
 import "./Adjuster.css";
-import { useState } from "react";
 import { ToggleButton, Box } from "@mui/material";
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 import Divider from "./Divider";
@@ -7,8 +6,12 @@ import Multiplier from "./Multiplier";
 
 function Adjuster(props) {
   //determine which adjuster component to display
-  const getAdjuster = (adjuster) => {
-    return adjuster === "divide" ? <Divider /> : <Multiplier />;
+  const getAdjuster = (adjuster, multiplierChange) => {
+    return adjuster === "divide" ? (
+      <Divider onMultiplierChange={multiplierChange} />
+    ) : (
+      <Multiplier onMultiplierChange={multiplierChange} />
+    );
   };
 
   return (
@@ -17,7 +20,7 @@ function Adjuster(props) {
     >
       <ToggleButtonGroup
         color="primary"
-        onChange={props.onChangeAdjuster}
+        onChange={props.onAdjusterChange}
         exclusive
         value={props.currentAdjuster}
         sx={{ m: 2 }}
@@ -29,7 +32,7 @@ function Adjuster(props) {
           Multiply
         </ToggleButton>
       </ToggleButtonGroup>
-      {getAdjuster(props.currentAdjuster)}
+      {getAdjuster(props.currentAdjuster, props.onMultiplierChange)}
     </Box>
   );
 }
