@@ -6,7 +6,6 @@ import {
   Paper,
   Grid,
   Container,
-  CssBaseline,
   Box,
   Typography,
   TextField,
@@ -40,72 +39,77 @@ function App() {
     return convertedRecipe;
   };
   return (
-    <Container component="main" maxWidth="sm" sx={{ mt: 10, mb: 5 }}>
-      <Box
-        sx={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-        }}
-      >
-        <Paper
-          elevation={3}
+    <>
+      <div className="logo-container">
+        <img src="/images/RiceCup-logo/vector/logo2.svg"></img>
+      </div>
+      <Container component="main" maxWidth="sm" sx={{ mt: 30, mb: 5 }}>
+        <Box
           sx={{
-            alignItems: "center",
-            p: 2,
             display: "flex",
-            borderRadius: "10px",
             flexDirection: "column",
+            alignItems: "center",
           }}
         >
-          <Box sx={{ display: "flex", m: 2 }}>
-            <RestaurantMenuIcon
-              sx={{ mr: 1 }}
-              fontSize="large"
-              color="primary"
-            />
-            <Typography variant="h6" gutterBottom>
-              Half Baked
-            </Typography>
-          </Box>
-          <Adjuster
-            currentAdjuster={adjuster}
-            currentMultiplier={multiplier}
-            onAdjusterChange={adjusterHandler}
-            onMultiplierChange={multiplierChangeHandler}
-          />
-          <Grid
-            container
-            spacing={2}
-            alignItems="center"
-            justifyContent="center"
+          <Paper
+            elevation={0}
+            sx={{
+              alignItems: "center",
+              p: 2,
+              display: "flex",
+              borderRadius: "10px",
+              flexDirection: "column",
+            }}
           >
-            <Grid item xs={6}>
-              <TextField
-                id="pasted-recipe"
-                multiline
-                variant="standard"
-                placeholder="paste recipe here"
-                onChange={recipeChangeHandler}
+            <Box sx={{ display: "flex", m: 2 }}>
+              <RestaurantMenuIcon
+                sx={{ mr: 1 }}
+                fontSize="large"
+                color="primary"
               />
+              <Typography variant="h6" gutterBottom>
+                Half Baked
+              </Typography>
+            </Box>
+            <Adjuster
+              currentAdjuster={adjuster}
+              currentMultiplier={multiplier}
+              onAdjusterChange={adjusterHandler}
+              onMultiplierChange={multiplierChangeHandler}
+            />
+            <Grid
+              container
+              spacing={2}
+              alignItems="center"
+              justifyContent="center"
+            >
+              <Grid item xs={6}>
+                <TextField
+                  id="pasted-recipe"
+                  multiline
+                  variant="standard"
+                  placeholder="paste recipe here"
+                  onChange={recipeChangeHandler}
+                />
+              </Grid>
+              <Grid item xs={6}>
+                <TextField
+                  id="converted-recipe"
+                  placeholder="converted"
+                  multiline
+                  disabled
+                  variant="standard"
+                  InputProps={{
+                    readOnly: true,
+                  }}
+                  value={convertedRecipe}
+                />
+              </Grid>
             </Grid>
-            <Grid item xs={6}>
-              <TextField
-                id="converted-recipe"
-                placeholder="converted"
-                multiline
-                disabled
-                variant="standard"
-                InputProps={{
-                  readOnly: true,
-                }}
-                value={convertedRecipe}
-              />
-            </Grid>
-          </Grid>
-        </Paper>
-      </Box>
-    </Container>
+          </Paper>
+        </Box>
+      </Container>
+    </>
   );
 }
 

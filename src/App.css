@@ -1,17 +1,13 @@
-.app-container {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  width: 50%;
-  height: 80vh;
-  margin: auto;
-  position: relative;
-  top: 5rem;
-}
-
-.MuiPaper-rounded {
-}
-
 h6 {
   color: #1976d2;
+}
+
+.logo-container {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  top: 8em;
+}
+img {
+  height: 6em;
 }

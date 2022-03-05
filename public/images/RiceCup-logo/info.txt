@@ -1,0 +1,18 @@
+
+Hope you enjoy your new logo, here are the people that
+made your beautiful logo happen :)
+font name: Aleo-Bold
+font link: https://alessiolaiso.com/aleo-font
+font author: Alessio Laiso
+font author site: https://alessiolaiso.com/
+Slogan Font: Questrial-Regular.otf
+
+icon designer: Simon Child
+icon designer link: /Simon Child
+        
+
+fontColor: {"hex":"#B4846C"}
+bgColor: {"hex":"#FCDEC0"}
+iconColor: {"hex":"#B4846C"}
+sloganColor: {"hex":"#7D5A50"}
+      
