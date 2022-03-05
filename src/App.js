@@ -41,67 +41,70 @@ function App() {
   };
   return (
     <Container component="main" maxWidth="sm" sx={{ mt: 10, mb: 5 }}>
-      <CssBaseline>
-        <Box
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+        }}
+      >
+        <Paper
+          elevation={3}
           sx={{
-            display: "flex",
-            flexDirection: "column",
             alignItems: "center",
+            p: 2,
+            display: "flex",
+            borderRadius: "10px",
+            flexDirection: "column",
           }}
         >
-          <Paper
-            elevation={3}
-            sx={{
-              alignItems: "center",
-              p: 2,
-              display: "flex",
-              flexDirection: "column",
-            }}
-          >
-            <Box sx={{ display: "flex", m: 2 }}>
-              <RestaurantMenuIcon sx={{ mr: 1 }} fontSize="large" />
-              <Typography variant="h6" gutterBottom>
-                Half Baked
-              </Typography>
-            </Box>
-            <Adjuster
-              currentAdjuster={adjuster}
-              currentMultiplier={multiplier}
-              onAdjusterChange={adjusterHandler}
-              onMultiplierChange={multiplierChangeHandler}
+          <Box sx={{ display: "flex", m: 2 }}>
+            <RestaurantMenuIcon
+              sx={{ mr: 1 }}
+              fontSize="large"
+              color="primary"
             />
-            <Grid
-              container
-              spacing={2}
-              alignItems="center"
-              justifyContent="center"
-            >
-              <Grid item xs={6}>
-                <TextField
-                  id="pasted-recipe"
-                  multiline
-                  variant="standard"
-                  placeholder="paste recipe here"
-                  onChange={recipeChangeHandler}
-                />
-              </Grid>
-              <Grid item xs={6}>
-                <TextField
-                  id="converted-recipe"
-                  placeholder="converted"
-                  multiline
-                  disabled
-                  variant="standard"
-                  InputProps={{
-                    readOnly: true,
-                  }}
-                  value={convertedRecipe}
-                />
-              </Grid>
+            <Typography variant="h6" gutterBottom>
+              Half Baked
+            </Typography>
+          </Box>
+          <Adjuster
+            currentAdjuster={adjuster}
+            currentMultiplier={multiplier}
+            onAdjusterChange={adjusterHandler}
+            onMultiplierChange={multiplierChangeHandler}
+          />
+          <Grid
+            container
+            spacing={2}
+            alignItems="center"
+            justifyContent="center"
+          >
+            <Grid item xs={6}>
+              <TextField
+                id="pasted-recipe"
+                multiline
+                variant="standard"
+                placeholder="paste recipe here"
+                onChange={recipeChangeHandler}
+              />
             </Grid>
-          </Paper>
-        </Box>
-      </CssBaseline>
+            <Grid item xs={6}>
+              <TextField
+                id="converted-recipe"
+                placeholder="converted"
+                multiline
+                disabled
+                variant="standard"
+                InputProps={{
+                  readOnly: true,
+                }}
+                value={convertedRecipe}
+              />
+            </Grid>
+          </Grid>
+        </Paper>
+      </Box>
     </Container>
   );
 }
