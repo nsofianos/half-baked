@@ -75,15 +75,7 @@ function App() {
               className="recipe-input"
               placeholder="paste recipe here"
               onChange={recipeChangeHandler}
-              rows="10"
-              cols="45"
             />
-            {/* <TextField
-              id="pasted-recipe"
-              variant="standard"
-              placeholder="paste recipe here"
-              onChange={recipeChangeHandler}
-            /> */}
             <Adjuster
               currentAdjuster={adjuster}
               currentMultiplier={multiplier}
