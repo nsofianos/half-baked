@@ -1,7 +1,7 @@
 import Adjuster from "./components/Adjuster";
+import RecipeDisplay from "./components/RecipeDisplay";
 import "./App.css";
 import { useState } from "react";
-import RestaurantMenuIcon from "@mui/icons-material/RestaurantMenu";
 import {
   Paper,
   Grid,
@@ -43,7 +43,18 @@ function App() {
       <div className="logo-container">
         <img src="/images/RiceCup-logo/vector/logo2.svg"></img>
       </div>
-      <Container component="main" maxWidth="sm" sx={{ mt: 30, mb: 5 }}>
+      <Container
+        component="main"
+        maxWidth="sm"
+        sx={{
+          display: "flex",
+          backgroundColor: "#FFFFFF",
+          p: 4,
+          borderRadius: 4,
+          mt: 30,
+          mb: 5,
+        }}
+      >
         <Box
           sx={{
             display: "flex",
@@ -51,63 +62,28 @@ function App() {
             alignItems: "center",
           }}
         >
-          <Paper
-            elevation={0}
+          <Box
             sx={{
               alignItems: "center",
-              p: 2,
               display: "flex",
-              borderRadius: "10px",
               flexDirection: "column",
             }}
           >
-            <Box sx={{ display: "flex", m: 2 }}>
-              <RestaurantMenuIcon
-                sx={{ mr: 1 }}
-                fontSize="large"
-                color="primary"
-              />
-              <Typography variant="h6" gutterBottom>
-                Half Baked
-              </Typography>
-            </Box>
+            <TextField
+              id="pasted-recipe"
+              variant="standard"
+              placeholder="paste recipe here"
+              onChange={recipeChangeHandler}
+            />
             <Adjuster
               currentAdjuster={adjuster}
               currentMultiplier={multiplier}
               onAdjusterChange={adjusterHandler}
               onMultiplierChange={multiplierChangeHandler}
             />
-            <Grid
-              container
-              spacing={2}
-              alignItems="center"
-              justifyContent="center"
-            >
-              <Grid item xs={6}>
-                <TextField
-                  id="pasted-recipe"
-                  multiline
-                  variant="standard"
-                  placeholder="paste recipe here"
-                  onChange={recipeChangeHandler}
-                />
-              </Grid>
-              <Grid item xs={6}>
-                <TextField
-                  id="converted-recipe"
-                  placeholder="converted"
-                  multiline
-                  disabled
-                  variant="standard"
-                  InputProps={{
-                    readOnly: true,
-                  }}
-                  value={convertedRecipe}
-                />
-              </Grid>
-            </Grid>
-          </Paper>
+          </Box>
         </Box>
+        <RecipeDisplay currentRecipe={convertedRecipe} />
       </Container>
     </>
   );
