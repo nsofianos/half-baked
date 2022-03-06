@@ -18,11 +18,13 @@ function App() {
   const [multiplier, setMultiplier] = useState(0.5);
 
   //divide/multiply toggle
-  const adjusterHandler = (event, newAdjuster) => {
+  const adjusterHandler = (event) => {
+    let newAdjuster = event.target.value;
     if (newAdjuster !== null) setAdjuster(newAdjuster);
   };
 
   const multiplierChangeHandler = (event, newMultiplier) => {
+    console.log(newMultiplier);
     if (newMultiplier !== null) setMultiplier(newMultiplier);
   };
 

@@ -1,0 +1,25 @@
+button {
+  border: none;
+  color: #fff1e2;
+  background-color: #b4846c;
+  font-family: monospace;
+  border-radius: 4px;
+  height: 40px;
+}
+
+button:hover {
+  cursor: pointer;
+  opacity: 90%;
+}
+
+.adjuster-button {
+  width: 80px;
+}
+
+.adjuster-button-group {
+  display: flex;
+}
+
+.selected {
+  background-color: #7d5a50;
+}
