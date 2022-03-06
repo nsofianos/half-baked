@@ -1,5 +1,6 @@
 import Adjuster from "./components/Adjuster";
 import RecipeDisplay from "./components/RecipeDisplay";
+import Textarea from "./components/UI/Textarea";
 import "./App.css";
 import { useState } from "react";
 import {
@@ -48,6 +49,7 @@ function App() {
         maxWidth="sm"
         sx={{
           display: "flex",
+          justifyContent: "center",
           backgroundColor: "#FFFFFF",
           p: 4,
           borderRadius: 4,
@@ -69,12 +71,19 @@ function App() {
               flexDirection: "column",
             }}
           >
-            <TextField
+            <Textarea
+              className="recipe-input"
+              placeholder="paste recipe here"
+              onChange={recipeChangeHandler}
+              rows="10"
+              cols="45"
+            />
+            {/* <TextField
               id="pasted-recipe"
               variant="standard"
               placeholder="paste recipe here"
               onChange={recipeChangeHandler}
-            />
+            /> */}
             <Adjuster
               currentAdjuster={adjuster}
               currentMultiplier={multiplier}
@@ -83,7 +92,6 @@ function App() {
             />
           </Box>
         </Box>
-        <RecipeDisplay currentRecipe={convertedRecipe} />
       </Container>
     </>
   );
