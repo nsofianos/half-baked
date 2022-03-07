@@ -4,6 +4,7 @@ import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 import Divider from "./Divider";
 import Button from "./UI/Button";
 import Multiplier from "./Multiplier";
+import ButtonGroup from "./UI/ButtonGroup";
 
 function Adjuster(props) {
   //determine which adjuster component to display
@@ -25,7 +26,7 @@ function Adjuster(props) {
     <Box
       sx={{ display: "flex", flexDirection: "column", alignItems: "center" }}
     >
-      <div className="adjuster-button-group">
+      <ButtonGroup className="adjuster-button-group">
         <Button
           className={`adjuster-button ${
             props.currentAdjuster === "divide" ? "selected" : ""
@@ -44,7 +45,7 @@ function Adjuster(props) {
         >
           Multiply
         </Button>
-      </div>
+      </ButtonGroup>
       <ToggleButtonGroup
         color="primary"
         onChange={props.onAdjusterChange}
