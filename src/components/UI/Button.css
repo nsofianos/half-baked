@@ -4,6 +4,7 @@ button {
   background-color: #b4846c;
   font-family: monospace;
   height: 40px;
+  width: 80px;
 }
 
 button:hover {
@@ -12,10 +13,6 @@ button:hover {
   -webkit-transform: scale(1.1);
   -ms-transform: scale(1.1);
   transform: scale(1.1);
-}
-
-.adjuster-button {
-  width: 80px;
 }
 
 .adjuster-button-group {

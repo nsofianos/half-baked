@@ -39,11 +39,11 @@ function Adjuster(props) {
         onClickHandler={props.onAdjusterChange}
       ></ButtonGroup>
 
-      {/* {getAdjuster(
+      {getAdjuster(
         props.currentAdjuster,
         props.currentMultiplier,
         props.onMultiplierChange
-      )} */}
+      )}
     </Box>
   );
 }
