@@ -5,18 +5,19 @@ button {
   font-family: monospace;
   height: 40px;
   width: 80px;
+  margin: 1px;
+  border-radius: 5px;
 }
 
 button:hover {
   cursor: pointer;
-  opacity: 95%;
+  background-color: #c2927a;
   -webkit-transform: scale(1.1);
   -ms-transform: scale(1.1);
   transform: scale(1.1);
 }
 .button:active {
   transform: scale(1);
-  /* Scaling button to 0.98 to its original size */
 }
 .adjuster-button-group {
   display: flex;
@@ -24,6 +25,10 @@ button:hover {
 
 .selected {
   background-color: #7d5a50;
+}
+
+.selected:hover {
+  background-color: #916b61;
 }
 
 .multiplier-button {
