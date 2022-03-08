@@ -3,7 +3,7 @@ import Button from "./Button";
 import { useState } from "react";
 
 function ButtonGroup(props) {
-  const [clickedId, setClickedId] = useState(-1);
+  const [clickedId, setClickedId] = useState(0);
   const classes = "button-group " + props.className;
 
   const handleClick = (event, id) => {
@@ -15,7 +15,10 @@ function ButtonGroup(props) {
       {props.buttons.map((button, i) => (
         <Button
           key={i}
-          className={clickedId === i ? "button selected" : "button"}
+          className={
+            (props.buttonClass ? props.buttonClass : "") +
+            (clickedId === i ? " button selected" : " button")
+          }
           onClick={(event) => handleClick(event, i)}
           value={button.value}
         >

@@ -9,10 +9,10 @@ button {
 
 button:hover {
   cursor: pointer;
+  opacity: 95%;
   -webkit-transform: scale(1.1);
   -ms-transform: scale(1.1);
   transform: scale(1.1);
-  opacity: 95%;
 }
 .button:active {
   transform: scale(1);
@@ -24,4 +24,8 @@ button:hover {
 
 .selected {
   background-color: #7d5a50;
+}
+
+.multiplier-button {
+  width: 40px;
 }

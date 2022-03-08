@@ -5,6 +5,7 @@ function Multiplier(props) {
   return (
     <ButtonGroup
       buttons={multiplierValues}
+      buttonClass={"multiplier-button"}
       className="multiplier-button-group"
       onClickHandler={props.onMultiplierChange}
     ></ButtonGroup>
