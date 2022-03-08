@@ -7,6 +7,13 @@ import Multiplier from "./Multiplier";
 import ButtonGroup from "./UI/ButtonGroup";
 
 function Adjuster(props) {
+  const adjusterButtons = [
+    { label: "Divide", value: "divide" },
+    {
+      label: "Multiply",
+      value: "multiply",
+    },
+  ];
   //determine which adjuster component to display
   const getAdjuster = (adjuster, multiplier, multiplierChange) => {
     return adjuster === "divide" ? (
@@ -26,45 +33,17 @@ function Adjuster(props) {
     <Box
       sx={{ display: "flex", flexDirection: "column", alignItems: "center" }}
     >
-      <ButtonGroup className="adjuster-button-group">
-        <Button
-          className={`adjuster-button ${
-            props.currentAdjuster === "divide" ? "selected" : ""
-          }`}
-          value="divide"
-          onClick={props.onAdjusterChange}
-        >
-          Divide
-        </Button>
-        <Button
-          className={`adjuster-button ${
-            props.currentAdjuster === "multiply" ? "selected" : ""
-          }`}
-          value="multiply"
-          onClick={props.onAdjusterChange}
-        >
-          Multiply
-        </Button>
-      </ButtonGroup>
-      <ToggleButtonGroup
-        color="primary"
-        onChange={props.onAdjusterChange}
-        exclusive
-        value={props.currentAdjuster}
-        sx={{ m: 2 }}
-      >
-        {/* <ToggleButton value="divide" aria-label="divided">
-          Divide
-        </ToggleButton>
-        <ToggleButton value="multiply" aria-label="multiplied">
-          Multiply
-        </ToggleButton> */}
-      </ToggleButtonGroup>
-      {getAdjuster(
+      <ButtonGroup
+        className="adjuster-button-group"
+        buttons={adjusterButtons}
+        onClickHandler={props.onAdjusterChange}
+      ></ButtonGroup>
+
+      {/* {getAdjuster(
         props.currentAdjuster,
         props.currentMultiplier,
         props.onMultiplierChange
-      )}
+      )} */}
     </Box>
   );
 }

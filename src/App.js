@@ -23,9 +23,9 @@ function App() {
     if (newAdjuster !== null) setAdjuster(newAdjuster);
   };
 
-  const multiplierChangeHandler = (event, newMultiplier) => {
-    console.log(newMultiplier);
-    if (newMultiplier !== null) setMultiplier(newMultiplier);
+  const multiplierChangeHandler = (event) => {
+    let multiplier = event.target.value;
+    if (multiplier !== null) setMultiplier(multiplier);
   };
 
   const recipeChangeHandler = (event) => {

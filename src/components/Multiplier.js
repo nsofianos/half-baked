@@ -1,5 +1,6 @@
 import ToggleButton from "@mui/material/ToggleButton";
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
+import { multiplierValues } from "../data/multiplierData";
 
 function Multiplier(props) {
   return (

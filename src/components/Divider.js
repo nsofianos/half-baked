@@ -1,28 +1,27 @@
-import ToggleButton from "@mui/material/ToggleButton";
-import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
+import Button from "./UI/Button";
+import ButtonGroup from "./UI/ButtonGroup";
+import { dividerValues } from "../data/multiplierData";
 
 function Divider(props) {
   return (
-    <ToggleButtonGroup
-      color="primary"
-      exclusive
-      sx={{ m: 2 }}
-      onChange={props.onMultiplierChange}
-      value={props.currentMultiplier}
+    <ButtonGroup
+      onClickHandler={props.onMultiplierChange}
+      // value={props.currentMultiplier}
+      buttonValues={dividerValues}
     >
-      <ToggleButton value={0.5} variant="contained">
+      <Button value={0.5} variant="contained">
         Half
-      </ToggleButton>
-      <ToggleButton value={0.333} variant="contained">
+      </Button>
+      <Button value={0.333} variant="contained">
         Third
-      </ToggleButton>
-      <ToggleButton value={0.25} variant="contained">
+      </Button>
+      <Button value={0.25} variant="contained">
         Quarter
-      </ToggleButton>
-      <ToggleButton value={0.125} variant="contained">
+      </Button>
+      <Button value={0.125} variant="contained">
         Eighth
-      </ToggleButton>
-    </ToggleButtonGroup>
+      </Button>
+    </ButtonGroup>
   );
 }
 
