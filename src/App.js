@@ -1,5 +1,5 @@
 import Adjuster from "./components/Adjuster";
-import RecipeDisplay from "./components/RecipeDisplay";
+import DisplayRecipe from "./components/DisplayRecipe";
 import Textarea from "./components/UI/Textarea";
 import "./App.css";
 import Button from "./components/UI/Button";
@@ -14,25 +14,25 @@ import {
   Typography,
   TextField,
 } from "@mui/material";
+import EditRecipe from "./components/EditRecipe";
 
 function App() {
-  const [convertedRecipe, setConvertedRecipe] = useState("");
-  const [adjuster, setAdjuster] = useState("divide");
   const [multiplier, setMultiplier] = useState(0.5);
+  const [convertedRecipe, setConvertedRecipe] = useState("");
+  const [currentDisplay, setCurrentDisplay] = useState("edit");
 
-  //divide/multiply toggle
-  const adjusterHandler = (event) => {
-    let newAdjuster = event.target.value;
-    if (newAdjuster !== null) setAdjuster(newAdjuster);
-  };
-
-  const multiplierChangeHandler = (event) => {
-    let multiplier = event.target.value;
-    if (multiplier !== null) setMultiplier(multiplier);
+  const displayHandler = (event) => {
+    setCurrentDisplay(event.currentTarget.value);
   };
 
   const recipeChangeHandler = (event) => {
     setConvertedRecipe(convertRecipe(event.target.value));
+  };
+
+  //sets the multiplier
+  const multiplierChangeHandler = (event) => {
+    let multiplier = event.target.value;
+    if (multiplier !== null) setMultiplier(multiplier);
   };
 
   const convertRecipe = (recipe) => {
@@ -44,55 +44,25 @@ function App() {
     }
     return convertedRecipe;
   };
+
+  const getDisplay = (currentDisplay) => {
+    if (currentDisplay === "edit")
+      return (
+        <EditRecipe
+          recipeChangeHandler={recipeChangeHandler}
+          displayHandler={displayHandler}
+          multiplier={multiplier}
+          multiplierChangeHandler={multiplierChangeHandler}
+        />
+      );
+    else return <DisplayRecipe displayHandler={displayHandler} />;
+  };
   return (
     <>
       <div className="logo-container">
         <img src="/images/RiceCup-logo/vector/logo2.svg"></img>
       </div>
-      <Container
-        component="main"
-        maxWidth="sm"
-        sx={{
-          display: "flex",
-          justifyContent: "center",
-          backgroundColor: "#FFFFFF",
-          p: 4,
-          borderRadius: 4,
-          mt: 30,
-          mb: 5,
-        }}
-      >
-        <Box
-          sx={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-          }}
-        >
-          <Box
-            sx={{
-              alignItems: "center",
-              display: "flex",
-              flexDirection: "column",
-            }}
-          >
-            <Textarea
-              className="recipe-input"
-              placeholder="paste recipe here"
-              onChange={recipeChangeHandler}
-            />
-            <Adjuster
-              currentAdjuster={adjuster}
-              currentMultiplier={multiplier}
-              onAdjusterChange={adjusterHandler}
-              onMultiplierChange={multiplierChangeHandler}
-            />
-          </Box>
-        </Box>
-        <Button className="button convert-button">
-          <FontAwesomeIcon icon={faArrowRight} size="2x" />
-        </Button>
-      </Container>
+      {getDisplay(currentDisplay)}
     </>
   );
 }
