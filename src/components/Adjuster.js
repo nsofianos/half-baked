@@ -1,8 +1,6 @@
 import "./Adjuster.css";
-import { ToggleButton, Box } from "@mui/material";
-import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
+import { Box } from "@mui/material";
 import Divider from "./Divider";
-import Button from "./UI/Button";
 import Multiplier from "./Multiplier";
 import ButtonGroup from "./UI/ButtonGroup";
 

@@ -34,3 +34,14 @@ button:hover {
 .multiplier-button {
   width: 40px;
 }
+
+.convert-button {
+  background-color: #fff;
+  margin-top: 2em;
+  color: #7d5a50;
+  width: 40px;
+}
+
+.convert-button:hover {
+  background-color: #fff;
+}

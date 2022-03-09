@@ -2,6 +2,9 @@ import Adjuster from "./components/Adjuster";
 import RecipeDisplay from "./components/RecipeDisplay";
 import Textarea from "./components/UI/Textarea";
 import "./App.css";
+import Button from "./components/UI/Button";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
 import {
   Paper,
@@ -86,7 +89,9 @@ function App() {
             />
           </Box>
         </Box>
-        <button onClick={recipeChangeHandler}>convert</button>
+        <Button className="button convert-button">
+          <FontAwesomeIcon icon={faArrowRight} size="2x" />
+        </Button>
       </Container>
     </>
   );
