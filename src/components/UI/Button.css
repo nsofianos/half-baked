@@ -19,9 +19,6 @@ button:hover {
 .button:active {
   transform: scale(1);
 }
-.adjuster-button-group {
-  display: flex;
-}
 
 .selected {
   background-color: #7d5a50;
@@ -39,9 +36,22 @@ button:hover {
   background-color: #fff;
   margin-top: 2em;
   color: #7d5a50;
-  width: 40px;
+  width: 80px;
+  border-radius: 25px;
+  border: 2px dotted #b4846c;
+  font-family: "Hubballi", cursive;
+  font-size: 16px;
 }
 
 .convert-button:hover {
   background-color: #fff;
+}
+
+.arrowIconOk {
+  margin-left: 0.5em;
+  font-size: 16px;
+}
+.arrowIconBack {
+  margin-right: 0.5em;
+  font-size: 16px;
 }

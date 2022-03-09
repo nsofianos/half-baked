@@ -21,7 +21,9 @@ function EditRecipe(props) {
       maxWidth="sm"
       sx={{
         display: "flex",
+        flexDirection: "column",
         justifyContent: "center",
+        alignItems: "center",
         backgroundColor: "#FFFFFF",
         p: 4,
         borderRadius: 4,
@@ -61,7 +63,12 @@ function EditRecipe(props) {
         onClick={props.displayHandler}
         className="button convert-button"
       >
-        <FontAwesomeIcon icon={faArrowRight} size="2x" />
+        OK
+        <FontAwesomeIcon
+          className="arrowIconOk"
+          icon={faArrowRight}
+          size="1x"
+        />
       </Button>
     </Container>
   );

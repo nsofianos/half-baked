@@ -6,9 +6,9 @@ import ButtonGroup from "./UI/ButtonGroup";
 
 function Adjuster(props) {
   const adjusterButtons = [
-    { label: "Divide", value: "divide" },
+    { label: "divide", value: "divide" },
     {
-      label: "Multiply",
+      label: "multiply",
       value: "multiply",
     },
   ];
@@ -29,14 +29,20 @@ function Adjuster(props) {
 
   return (
     <Box
-      sx={{ display: "flex", flexDirection: "column", alignItems: "center" }}
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        m: 1,
+      }}
     >
+      <p>i want to..</p>
       <ButtonGroup
         className="adjuster-button-group"
         buttons={adjusterButtons}
         onClickHandler={props.onAdjusterChange}
       ></ButtonGroup>
-
+      <p>by..</p>
       {getAdjuster(
         props.currentAdjuster,
         props.currentMultiplier,

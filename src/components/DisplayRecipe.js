@@ -2,7 +2,7 @@ import { Container } from "@mui/material";
 import Textarea from "./UI/Textarea";
 import Button from "./UI/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
+import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 
 const DisplayRecipe = (props) => {
   return (
@@ -18,18 +18,25 @@ const DisplayRecipe = (props) => {
         mb: 5,
       }}
     >
-      <Textarea
-        disabled
-        placeholder={props.convertedRecipe}
-        className="recipe-input"
-      ></Textarea>
-      <Button
-        value={"edit"}
-        onClick={props.displayHandler}
-        className="button convert-button"
-      >
-        <FontAwesomeIcon icon={faArrowRight} size="2x" />
-      </Button>
+      <div>
+        <Textarea
+          disabled
+          placeholder={props.convertedRecipe}
+          className="recipe-input"
+        ></Textarea>
+        <Button
+          value={"edit"}
+          onClick={props.displayHandler}
+          className="button convert-button"
+        >
+          <FontAwesomeIcon
+            icon={faArrowLeft}
+            size="2x"
+            className="arrowIconBack"
+          />
+          BACK
+        </Button>
+      </div>
     </Container>
   );
 };

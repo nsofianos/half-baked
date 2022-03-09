@@ -1,8 +1,8 @@
 const dividerValues = [
-  { label: "Half", value: 0.5 },
-  { label: "Third", value: 0.333 },
-  { label: "Quarter", value: 0.25 },
-  { label: "Eighth", value: 0.125 },
+  { label: "half", value: 0.5 },
+  { label: "third", value: 0.333 },
+  { label: "quarter", value: 0.25 },
+  { label: "eighth", value: 0.125 },
 ];
 
 const multiplierValues = [
