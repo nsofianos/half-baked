@@ -34,7 +34,7 @@ const DisplayRecipe = (props) => {
             size="2x"
             className="arrowIconBack"
           />
-          BACK
+          back
         </Button>
       </div>
     </Container>

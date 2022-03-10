@@ -57,10 +57,24 @@ function App() {
       );
     else return <DisplayRecipe displayHandler={displayHandler} />;
   };
+
+  const getRecipe = () => {
+    fetch(
+      "https://api.spoonacular.com/recipes/extract?apiKey=60784736b42f4252a78b0d93536a96ca&url=https://www.allrecipes.com/recipe/231030/braised-corned-beef-brisket/"
+    )
+      .then((res) => res.json())
+      .then((data) => console.log(parseIngredients(data.extendedIngredients)));
+  };
+
+  const parseIngredients = (data) => {
+    return data.map((ingredient) => ingredient.original).join("\r\n");
+  };
+
   return (
     <>
+      <button onClick={getRecipe}></button>
       <div className="logo-container">
-        <img src="/images/RiceCup-logo/vector/logo2.svg"></img>
+        <img src="/images/logo/default-monochrome.svg"></img>
       </div>
       {getDisplay(currentDisplay)}
     </>

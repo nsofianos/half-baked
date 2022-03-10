@@ -63,7 +63,7 @@ function EditRecipe(props) {
         onClick={props.displayHandler}
         className="button convert-button"
       >
-        OK
+        ok
         <FontAwesomeIcon
           className="arrowIconOk"
           icon={faArrowRight}
