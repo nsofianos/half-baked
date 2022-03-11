@@ -3,6 +3,7 @@
 }
 
 .recipe-display {
+  line-height: 2;
   padding: 16px;
   border-radius: 12px;
   background-color: #7d5a50;

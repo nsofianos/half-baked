@@ -42,7 +42,8 @@ function App() {
         ? (convertedRecipe += parseInt(recipe.charAt(i)) * multiplier)
         : (convertedRecipe += recipe.charAt(i));
     }
-    return convertedRecipe;
+    //return with proper spacing
+    return convertedRecipe.replace(/\n\s*\n/g, "\n");
   };
 
   const getDisplay = (currentDisplay) => {
