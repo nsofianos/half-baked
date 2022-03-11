@@ -1,0 +1,13 @@
+.recipe-display-text {
+  color: #ffeddb;
+}
+
+.recipe-display {
+  padding: 16px;
+  border-radius: 12px;
+  background-color: #7d5a50;
+  color: #fce8d4;
+  white-space: pre-line;
+  font-family: monospace;
+  font-size: 14px;
+}

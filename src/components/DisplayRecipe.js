@@ -1,8 +1,8 @@
 import { Container } from "@mui/material";
-import Textarea from "./UI/Textarea";
 import Button from "./UI/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
+import "./DisplayRecipe.css";
 
 const DisplayRecipe = (props) => {
   return (
@@ -10,6 +10,7 @@ const DisplayRecipe = (props) => {
       maxWidth="sm"
       sx={{
         display: "flex",
+        flexDirection: "column",
         justifyContent: "center",
         backgroundColor: "#FFFFFF",
         p: 4,
@@ -18,25 +19,19 @@ const DisplayRecipe = (props) => {
         mb: 5,
       }}
     >
-      <div>
-        <Textarea
-          disabled
-          placeholder={props.convertedRecipe}
-          className="recipe-input"
-        ></Textarea>
-        <Button
-          value={"edit"}
-          onClick={props.displayHandler}
-          className="button convert-button"
-        >
-          <FontAwesomeIcon
-            icon={faArrowLeft}
-            size="2x"
-            className="arrowIconBack"
-          />
-          back
-        </Button>
-      </div>
+      <div className="recipe-display">{props.convertedRecipe}</div>
+      <Button
+        value={"edit"}
+        onClick={props.displayHandler}
+        className="button convert-button"
+      >
+        <FontAwesomeIcon
+          icon={faArrowLeft}
+          size="2x"
+          className="arrowIconBack"
+        />
+        back
+      </Button>
     </Container>
   );
 };

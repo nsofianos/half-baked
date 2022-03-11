@@ -55,7 +55,13 @@ function App() {
           multiplierChangeHandler={multiplierChangeHandler}
         />
       );
-    else return <DisplayRecipe displayHandler={displayHandler} />;
+    else
+      return (
+        <DisplayRecipe
+          convertedRecipe={convertedRecipe}
+          displayHandler={displayHandler}
+        />
+      );
   };
 
   const getRecipe = () => {
