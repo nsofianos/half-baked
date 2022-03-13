@@ -1,7 +1,7 @@
 import { Container } from "@mui/material";
 import Button from "./UI/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
+import { faAnglesLeft } from "@fortawesome/free-solid-svg-icons";
 import "./DisplayRecipe.css";
 
 const DisplayRecipe = (props) => {
@@ -26,11 +26,10 @@ const DisplayRecipe = (props) => {
         className="button convert-button"
       >
         <FontAwesomeIcon
-          icon={faArrowLeft}
+          icon={faAnglesLeft}
           size="2x"
           className="icon arrowIconBack"
         />
-        back
       </Button>
     </Container>
   );

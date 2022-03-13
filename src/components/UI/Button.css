@@ -33,25 +33,17 @@ button:hover {
 }
 
 .convert-button {
-  background-color: #fff;
-  margin-top: 2em;
+  background-color: #fce8d4;
+  margin-top: 0.5em;
   color: #7d5a50;
-  width: 80px;
+  width: 50px;
   border-radius: 25px;
-  border: 2px dotted #b4846c;
   font-family: "Hubballi", cursive;
   font-size: 18px;
 }
 
 .convert-button:hover {
-  background-color: #fff;
-}
-
-.arrowIconOk {
-  margin-left: 0.5em;
-}
-.arrowIconBack {
-  margin-right: 0.5em;
+  background-color: #f5e0cc;
 }
 
 .change-input-type {

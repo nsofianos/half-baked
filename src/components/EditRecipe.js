@@ -2,7 +2,7 @@ import Adjuster from "./Adjuster";
 import Textarea from "./UI/Textarea";
 import Button from "./UI/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowRight, faLink } from "@fortawesome/free-solid-svg-icons";
+import { faLink, faAnglesRight } from "@fortawesome/free-solid-svg-icons";
 import { faKeyboard } from "@fortawesome/free-regular-svg-icons";
 import { Container, Box } from "@mui/material";
 import { useState } from "react";
@@ -91,12 +91,7 @@ function EditRecipe(props) {
         }}
         className="button convert-button"
       >
-        ok
-        <FontAwesomeIcon
-          className="icon arrowIconOk"
-          icon={faArrowRight}
-          size="1x"
-        />
+        <FontAwesomeIcon className="icon" icon={faAnglesRight} />
       </Button>
     </Container>
   );
