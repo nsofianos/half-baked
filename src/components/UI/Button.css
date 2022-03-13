@@ -49,9 +49,19 @@ button:hover {
 
 .arrowIconOk {
   margin-left: 0.5em;
-  font-size: 16px;
 }
 .arrowIconBack {
   margin-right: 0.5em;
-  font-size: 16px;
+}
+
+.change-input-type {
+  color: #7d5a50;
+  width: 40px;
+  background-color: #fff;
+  position: absolute;
+  left: -3.5em;
+}
+
+.change-input-type:hover {
+  background-color: #fff;
 }

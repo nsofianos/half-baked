@@ -2,9 +2,11 @@ import Adjuster from "./Adjuster";
 import Textarea from "./UI/Textarea";
 import Button from "./UI/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
+import { faArrowRight, faLink } from "@fortawesome/free-solid-svg-icons";
+import { faKeyboard } from "@fortawesome/free-regular-svg-icons";
 import { Container, Box } from "@mui/material";
 import { useState } from "react";
+import "./EditRecipe.css";
 
 function EditRecipe(props) {
   const [adjuster, setAdjuster] = useState("divide");
@@ -33,30 +35,30 @@ function EditRecipe(props) {
     >
       <Box
         sx={{
+          alignItems: "center",
           display: "flex",
           flexDirection: "column",
-          alignItems: "center",
         }}
       >
-        <Box
-          sx={{
-            alignItems: "center",
-            display: "flex",
-            flexDirection: "column",
-          }}
-        >
+        <div className="recipe-input-container">
+          <Button className="change-input-type">
+            <FontAwesomeIcon icon={faKeyboard} size="1x" className="icon-md" />
+          </Button>
+          <Button className="change-input-type">
+            <FontAwesomeIcon icon={faLink} size="1x" className="icon-md" />
+          </Button>
           <Textarea
             className="recipe-input"
             placeholder="paste recipe here"
             onChange={props.recipeChangeHandler}
           />
-          <Adjuster
-            currentAdjuster={adjuster}
-            currentMultiplier={props.multiplier}
-            onAdjusterChange={adjusterHandler}
-            onMultiplierChange={props.multiplierChangeHandler}
-          />
-        </Box>
+        </div>
+        <Adjuster
+          currentAdjuster={adjuster}
+          currentMultiplier={props.multiplier}
+          onAdjusterChange={adjusterHandler}
+          onMultiplierChange={props.multiplierChangeHandler}
+        />
       </Box>
       <Button
         value={"display"}
@@ -65,7 +67,7 @@ function EditRecipe(props) {
       >
         ok
         <FontAwesomeIcon
-          className="arrowIconOk"
+          className="icon arrowIconOk"
           icon={faArrowRight}
           size="1x"
         />

@@ -28,7 +28,7 @@ const DisplayRecipe = (props) => {
         <FontAwesomeIcon
           icon={faArrowLeft}
           size="2x"
-          className="arrowIconBack"
+          className="icon arrowIconBack"
         />
         back
       </Button>
