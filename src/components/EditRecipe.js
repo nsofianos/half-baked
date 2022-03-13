@@ -10,16 +10,11 @@ import "./EditRecipe.css";
 
 function EditRecipe(props) {
   const [adjuster, setAdjuster] = useState("divide");
-  const [inputType, setInputType] = useState("link");
 
   //divide/multiply toggle
   const adjusterHandler = (event) => {
     let newAdjuster = event.target.value;
     if (newAdjuster !== null) setAdjuster(newAdjuster);
-  };
-
-  const handleInputType = (event) => {
-    setInputType(event.currentTarget.value);
   };
 
   return (
@@ -45,12 +40,12 @@ function EditRecipe(props) {
           flexDirection: "column",
         }}
       >
-        {inputType === "link" ? (
+        {props.inputType === "link" ? (
           <div className="recipe-input-container">
             <Button
               value="manual"
               className="change-input-type"
-              onClick={handleInputType}
+              onClick={props.inputTypeHandler}
             >
               <FontAwesomeIcon
                 icon={faKeyboard}
@@ -61,7 +56,7 @@ function EditRecipe(props) {
             <Textarea
               className="recipe-input"
               placeholder="paste link to recipe"
-              onChange={props.recipeChangeHandler}
+              onChange={props.inputChangeHandler}
             />
           </div>
         ) : (
@@ -69,14 +64,14 @@ function EditRecipe(props) {
             <Button
               value="link"
               className="change-input-type"
-              onClick={handleInputType}
+              onClick={props.inputTypeHandler}
             >
               <FontAwesomeIcon icon={faLink} size="1x" className="icon-md" />
             </Button>
             <Textarea
               className="recipe-input"
               placeholder="paste recipe here"
-              onChange={props.recipeChangeHandler}
+              onChange={props.inputChangeHandler}
             />
           </div>
         )}
@@ -90,7 +85,10 @@ function EditRecipe(props) {
       </Box>
       <Button
         value={"display"}
-        onClick={props.displayHandler}
+        onClick={(e) => {
+          props.convertRecipeHandler(e);
+          props.displayHandler(e);
+        }}
         className="button convert-button"
       >
         ok

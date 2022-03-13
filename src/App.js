@@ -18,42 +18,56 @@ import EditRecipe from "./components/EditRecipe";
 
 function App() {
   const [multiplier, setMultiplier] = useState(0.5);
-  const [convertedRecipe, setConvertedRecipe] = useState("");
+  const [currentInput, setCurrentInput] = useState("");
   const [currentDisplay, setCurrentDisplay] = useState("edit");
+  const [inputType, setInputType] = useState("link");
+  const [convertedRecipe, setConvertedRecipe] = useState("");
+
+  const inputChangeHandler = (event) => {
+    setCurrentInput(event.target.value);
+  };
 
   const displayHandler = (event) => {
     setCurrentDisplay(event.currentTarget.value);
   };
 
-  const recipeChangeHandler = (event) => {
-    setConvertedRecipe(convertRecipe(event.target.value));
+  const inputTypeHandler = (event) => {
+    setInputType(event.currentTarget.value);
   };
-
   //sets the multiplier
   const multiplierChangeHandler = (event) => {
     let multiplier = event.target.value;
     if (multiplier !== null) setMultiplier(multiplier);
   };
 
+  const convertRecipeHandler = (event) => {
+    inputType === "link"
+      ? getRecipe(currentInput)
+      : convertRecipe(currentInput);
+    setCurrentDisplay(event.currentTarget.value);
+  };
+
   const convertRecipe = (recipe) => {
-    let convertedRecipe = "";
+    let converted = "";
     for (let i = 0; i < recipe.length; i++) {
       parseInt(recipe.charAt(i))
-        ? (convertedRecipe += parseInt(recipe.charAt(i)) * multiplier)
-        : (convertedRecipe += recipe.charAt(i));
+        ? (converted += parseInt(recipe.charAt(i)) * multiplier)
+        : (converted += recipe.charAt(i));
     }
-    //return with proper spacing
-    return convertedRecipe.replace(/\n\s*\n/g, "\n");
+    setConvertedRecipe(converted.replace(/\n\s*\n/g, "\n"));
   };
 
   const getDisplay = (currentDisplay) => {
     if (currentDisplay === "edit")
       return (
         <EditRecipe
-          recipeChangeHandler={recipeChangeHandler}
+          inputChangeHandler={inputChangeHandler}
+          convertRecipeHandler={convertRecipeHandler}
           displayHandler={displayHandler}
           multiplier={multiplier}
           multiplierChangeHandler={multiplierChangeHandler}
+          inputType={inputType}
+          inputTypeHandler={inputTypeHandler}
         />
       );
     else
@@ -65,21 +79,22 @@ function App() {
       );
   };
 
-  const getRecipe = () => {
-    fetch(
-      "https://api.spoonacular.com/recipes/extract?apiKey=60784736b42f4252a78b0d93536a96ca&url=https://www.allrecipes.com/recipe/231030/braised-corned-beef-brisket/"
-    )
-      .then((res) => res.json())
-      .then((data) => console.log(parseIngredients(data.extendedIngredients)));
-  };
-
   const parseIngredients = (data) => {
     return data.map((ingredient) => ingredient.original).join("\r\n");
   };
 
+  const getRecipe = (link) => {
+    fetch(
+      `https://api.spoonacular.com/recipes/extract?apiKey=60784736b42f4252a78b0d93536a96ca&url=${link}`
+    )
+      .then((res) => res.json())
+      .then((data) =>
+        convertRecipe(parseIngredients(data.extendedIngredients))
+      );
+  };
+
   return (
     <>
-      <button onClick={getRecipe}></button>
       <div className="logo-container">
         <img src="/images/logo/default-monochrome.svg"></img>
       </div>
