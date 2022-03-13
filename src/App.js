@@ -42,8 +42,8 @@ function App() {
 
   const convertRecipeHandler = (event) => {
     inputType === "link"
-      ? getRecipe(currentInput)
-      : convertRecipe(currentInput);
+      ? getRecipe(currentInput).then((res) => setConvertedRecipe(res))
+      : setConvertedRecipe(convertRecipe(currentInput));
     setCurrentDisplay(event.currentTarget.value);
   };
 
@@ -54,7 +54,7 @@ function App() {
         ? (converted += parseInt(recipe.charAt(i)) * multiplier)
         : (converted += recipe.charAt(i));
     }
-    setConvertedRecipe(converted.replace(/\n\s*\n/g, "\n"));
+    return converted.replace(/\n\s*\n/g, "\n");
   };
 
   const getDisplay = (currentDisplay) => {
@@ -84,7 +84,7 @@ function App() {
   };
 
   const getRecipe = (link) => {
-    fetch(
+    return fetch(
       `https://api.spoonacular.com/recipes/extract?apiKey=60784736b42f4252a78b0d93536a96ca&url=${link}`
     )
       .then((res) => res.json())
