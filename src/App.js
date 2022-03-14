@@ -22,6 +22,7 @@ function App() {
   const [currentDisplay, setCurrentDisplay] = useState("edit");
   const [inputType, setInputType] = useState("link");
   const [convertedRecipe, setConvertedRecipe] = useState("");
+  const [loadingRecipe, setLoadingRecipe] = useState("false");
 
   const inputChangeHandler = (event) => {
     setCurrentInput(event.target.value);
@@ -41,9 +42,14 @@ function App() {
   };
 
   const convertRecipeHandler = (event) => {
+    setLoadingRecipe("true");
     if (inputType === "link") {
       getRecipe(currentInput).then((res) => {
-        return setConvertedRecipe(res), setCurrentDisplay("display");
+        return (
+          setConvertedRecipe(res),
+          setLoadingRecipe("false"),
+          setCurrentDisplay("display")
+        );
       });
     } else {
       setConvertedRecipe(convertRecipe(currentInput));
@@ -72,6 +78,7 @@ function App() {
           multiplierChangeHandler={multiplierChangeHandler}
           inputType={inputType}
           inputTypeHandler={inputTypeHandler}
+          loadingRecipe={loadingRecipe}
         />
       );
     else
