@@ -85,10 +85,7 @@ function EditRecipe(props) {
       </Box>
       <Button
         value={"display"}
-        onClick={(e) => {
-          props.convertRecipeHandler(e);
-          props.displayHandler(e);
-        }}
+        onClick={props.convertRecipeHandler}
         className="button convert-button"
       >
         <FontAwesomeIcon className="icon" icon={faAnglesRight} />

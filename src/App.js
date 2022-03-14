@@ -41,10 +41,14 @@ function App() {
   };
 
   const convertRecipeHandler = (event) => {
-    inputType === "link"
-      ? getRecipe(currentInput).then((res) => setConvertedRecipe(res))
-      : setConvertedRecipe(convertRecipe(currentInput));
-    setCurrentDisplay(event.currentTarget.value);
+    if (inputType === "link") {
+      getRecipe(currentInput).then((res) => {
+        return setConvertedRecipe(res), setCurrentDisplay("display");
+      });
+    } else {
+      setConvertedRecipe(convertRecipe(currentInput));
+      setCurrentDisplay("display");
+    }
   };
 
   const convertRecipe = (recipe) => {
