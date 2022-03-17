@@ -3,6 +3,7 @@
 }
 
 .recipe-display {
+  word-wrap: break-word;
   animation: transitionIn 1s;
   line-height: 2;
   padding: 16px;
