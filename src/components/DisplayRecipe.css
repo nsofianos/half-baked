@@ -3,6 +3,7 @@
 }
 
 .recipe-display {
+  animation: transitionIn 1s;
   line-height: 2;
   padding: 16px;
   border-radius: 12px;
@@ -11,4 +12,17 @@
   white-space: pre-line;
   font-family: monospace;
   font-size: 14px;
+}
+
+@keyframes transitionIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+    transform: translateX(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0px);
+    transform: translateX(0px);
+  }
 }

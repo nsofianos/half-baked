@@ -52,8 +52,11 @@ function App() {
         );
       });
     } else {
-      setConvertedRecipe(convertRecipe(currentInput));
-      setCurrentDisplay("display");
+      setTimeout(() => {
+        setConvertedRecipe(convertRecipe(currentInput));
+        setLoadingRecipe("false");
+        setCurrentDisplay("display");
+      }, 2000);
     }
   };
 
