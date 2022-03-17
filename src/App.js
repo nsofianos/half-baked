@@ -61,13 +61,24 @@ function App() {
   };
 
   const convertRecipe = (recipe) => {
+    let parsedRecipe = parseUnicodeFractions(recipe);
     let converted = "";
-    for (let i = 0; i < recipe.length; i++) {
-      parseInt(recipe.charAt(i))
-        ? (converted += parseInt(recipe.charAt(i)) * multiplier)
-        : (converted += recipe.charAt(i));
+    for (let i = 0; i < parsedRecipe.length; i++) {
+      parseInt(parsedRecipe.charAt(i))
+        ? (converted += parseInt(parsedRecipe.charAt(i)) * multiplier)
+        : (converted += parsedRecipe.charAt(i));
     }
     return converted.replace(/\n\s*\n/g, "\n");
+  };
+
+  const parseUnicodeFractions = (recipe) => {
+    return recipe
+      .replaceAll("½", "1/2")
+      .replaceAll("¼", "1/4")
+      .replaceAll("⅛", "1/8")
+      .replaceAll("⅓", "1/3")
+      .replaceAll("⅔", "2/3")
+      .replaceAll("¾", "3/4");
   };
 
   const getDisplay = (currentDisplay) => {
