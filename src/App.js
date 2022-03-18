@@ -98,10 +98,10 @@ function App() {
         parseInt(indexp2)
       ) {
         let frac = new Fraction(parseInt(curIndex));
-        frac.add(
+        frac = frac.add(
           new Fraction(parseInt(indexp2), parseInt(recipe.charAt([i + 4])))
         );
-        console.log(multiplier);
+        console.log("YO");
         adjuster === "divide"
           ? (frac = frac.divide(multiplier).toString())
           : (frac = frac.multiply(multiplier).toString());
