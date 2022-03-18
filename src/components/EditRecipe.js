@@ -9,18 +9,9 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { faKeyboard } from "@fortawesome/free-regular-svg-icons";
 import { Container, Box } from "@mui/material";
-import { useState } from "react";
 import "./EditRecipe.css";
 
 function EditRecipe(props) {
-  const [adjuster, setAdjuster] = useState("divide");
-
-  //divide/multiply toggle
-  const adjusterHandler = (event) => {
-    let newAdjuster = event.target.value;
-    if (newAdjuster !== null) setAdjuster(newAdjuster);
-  };
-
   return (
     <Container
       component="main"
@@ -81,9 +72,9 @@ function EditRecipe(props) {
         )}
 
         <Adjuster
-          currentAdjuster={adjuster}
+          currentAdjuster={props.adjuster}
           currentMultiplier={props.multiplier}
-          onAdjusterChange={adjusterHandler}
+          onAdjusterChange={props.adjusterHandler}
           onMultiplierChange={props.multiplierChangeHandler}
         />
       </Box>

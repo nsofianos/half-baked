@@ -2,6 +2,7 @@ import DisplayRecipe from "./components/DisplayRecipe";
 import "./App.css";
 import { useState } from "react";
 import EditRecipe from "./components/EditRecipe";
+import { faRectangleXmark } from "@fortawesome/free-solid-svg-icons";
 var Fraction = require("fractional").Fraction;
 
 function App() {
@@ -13,11 +14,17 @@ function App() {
   const [inputType, setInputType] = useState("link");
   const [convertedRecipe, setConvertedRecipe] = useState("");
   const [loadingRecipe, setLoadingRecipe] = useState("false");
+  const [adjuster, setAdjuster] = useState("divide");
+
+  //divide/multiply toggle
+  const adjusterHandler = (event) => {
+    let newAdjuster = event.target.value;
+    if (newAdjuster !== null) setAdjuster(newAdjuster);
+  };
 
   const inputChangeHandler = (event) => {
     setCurrentInput(event.target.value);
   };
-
   const displayHandler = (event) => {
     setCurrentDisplay(event.currentTarget.value);
   };
@@ -46,7 +53,7 @@ function App() {
         setConvertedRecipe(convertRecipe(currentInput));
         setLoadingRecipe("false");
         setCurrentDisplay("display");
-      }, 20);
+      }, 2000);
     }
   };
 
@@ -58,7 +65,9 @@ function App() {
       parseInt(parsedRecipe.charAt(i)) &&
       !parseInt(parsedRecipe.charAt(i + 2)) &&
       parsedRecipe.charAt(i - 1) !== "/"
-        ? (parsedConverted += parseInt(parsedRecipe.charAt(i)) * multiplier)
+        ? (parsedConverted += (
+            parseInt(parsedRecipe.charAt(i)) * multiplier
+          ).toFixed(1))
         : (parsedConverted += parsedRecipe.charAt(i));
     }
     let parsedConvertedWithFractions = convertFractions(parsedConverted);
@@ -87,17 +96,22 @@ function App() {
         /\s/g.test(indexp1) &&
         parseInt(indexp2)
       ) {
-        converted += new Fraction(parseInt(curIndex))
-          .add(
-            new Fraction(parseInt(indexp2), parseInt(recipe.charAt([i + 4])))
-          )
-          .multiply(multiplier)
-          .toString();
+        let frac = new Fraction(parseInt(curIndex));
+        frac.add(
+          new Fraction(parseInt(indexp2), parseInt(recipe.charAt([i + 4])))
+        );
+        adjuster === "divide"
+          ? (frac = frac.divide(multiplier).toString())
+          : (frac = frac.multiply(multiplier).toString());
+        converted += frac;
         i += 4;
       } else if (parseInt(curIndex) && indexp1 === "/" && parseInt(indexp2)) {
-        converted += new Fraction(parseInt(curIndex), parseInt(indexp2))
-          .multiply(multiplier)
-          .toString();
+        let frac = new Fraction(parseInt(curIndex), parseInt(indexp2));
+        adjuster === "divide"
+          ? (frac = frac.divide(multiplier).toString())
+          : (frac = frac.multiply(multiplier).toString());
+
+        converted += frac;
         i += 2;
       } else {
         converted += curIndex;
@@ -118,6 +132,8 @@ function App() {
           inputType={inputType}
           inputTypeHandler={inputTypeHandler}
           loadingRecipe={loadingRecipe}
+          adjuster={adjuster}
+          adjusterHandler={adjusterHandler}
         />
       );
     else
