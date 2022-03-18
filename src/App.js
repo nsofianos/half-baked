@@ -15,8 +15,11 @@ import {
   TextField,
 } from "@mui/material";
 import EditRecipe from "./components/EditRecipe";
+var Fraction = require("fractional").Fraction;
 
 function App() {
+  //console.log(new Fraction(1).multiply(6).toString());
+
   const [multiplier, setMultiplier] = useState(0.5);
   const [currentInput, setCurrentInput] = useState("");
   const [currentDisplay, setCurrentDisplay] = useState("edit");
@@ -56,19 +59,23 @@ function App() {
         setConvertedRecipe(convertRecipe(currentInput));
         setLoadingRecipe("false");
         setCurrentDisplay("display");
-      }, 2000);
+      }, 20);
     }
   };
 
   const convertRecipe = (recipe) => {
     let parsedRecipe = parseUnicodeFractions(recipe);
-    let converted = "";
+    let parsedConverted = "";
     for (let i = 0; i < parsedRecipe.length; i++) {
-      parseInt(parsedRecipe.charAt(i))
-        ? (converted += parseInt(parsedRecipe.charAt(i)) * multiplier)
-        : (converted += parsedRecipe.charAt(i));
+      //if character is number & not part of a fraction, multiply by current multiplier
+      parseInt(parsedRecipe.charAt(i)) &&
+      !parseInt(parsedRecipe.charAt(i + 2)) &&
+      parsedRecipe.charAt(i - 1) !== "/"
+        ? (parsedConverted += parseInt(parsedRecipe.charAt(i)) * multiplier)
+        : (parsedConverted += parsedRecipe.charAt(i));
     }
-    return converted.replace(/\n\s*\n/g, "\n");
+    let parsedConvertedWithFractions = convertFractions(parsedConverted);
+    return parsedConvertedWithFractions.replace(/\n\s*\n/g, "\n");
   };
 
   const parseUnicodeFractions = (recipe) => {
@@ -79,6 +86,37 @@ function App() {
       .replaceAll("⅓", "1/3")
       .replaceAll("⅔", "2/3")
       .replaceAll("¾", "3/4");
+  };
+
+  const convertFractions = (recipe) => {
+    let converted = "";
+    for (let i = 0; i < recipe.length; i++) {
+      let curIndex = recipe.charAt(i);
+      let indexp1 = recipe.charAt(i + 1);
+      let indexp2 = recipe.charAt(i + 2);
+      if (
+        //if mixed fraction, multiply and skip index forward
+        parseInt(curIndex) &&
+        /\s/g.test(indexp1) &&
+        parseInt(indexp2)
+      ) {
+        converted += new Fraction(parseInt(curIndex))
+          .add(
+            new Fraction(parseInt(indexp2), parseInt(recipe.charAt([i + 4])))
+          )
+          .multiply(multiplier)
+          .toString();
+        i += 4;
+      } else if (parseInt(curIndex) && indexp1 === "/" && parseInt(indexp2)) {
+        converted += new Fraction(parseInt(curIndex), parseInt(indexp2))
+          .multiply(multiplier)
+          .toString();
+        i += 2;
+      } else {
+        converted += curIndex;
+      }
+    }
+    return converted;
   };
 
   const getDisplay = (currentDisplay) => {
