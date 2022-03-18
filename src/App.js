@@ -2,7 +2,6 @@ import DisplayRecipe from "./components/DisplayRecipe";
 import "./App.css";
 import { useState } from "react";
 import EditRecipe from "./components/EditRecipe";
-import { faRectangleXmark } from "@fortawesome/free-solid-svg-icons";
 var Fraction = require("fractional").Fraction;
 
 function App() {
