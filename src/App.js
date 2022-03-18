@@ -1,19 +1,6 @@
-import Adjuster from "./components/Adjuster";
 import DisplayRecipe from "./components/DisplayRecipe";
-import Textarea from "./components/UI/Textarea";
 import "./App.css";
-import Button from "./components/UI/Button";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
-import {
-  Paper,
-  Grid,
-  Container,
-  Box,
-  Typography,
-  TextField,
-} from "@mui/material";
 import EditRecipe from "./components/EditRecipe";
 var Fraction = require("fractional").Fraction;
 
@@ -159,7 +146,7 @@ function App() {
   return (
     <>
       <div className="logo-container">
-        <img src="/images/logo/default-monochrome.svg"></img>
+        <img alt="logo" src="/images/logo/default-monochrome.svg"></img>
       </div>
       {getDisplay(currentDisplay)}
     </>
