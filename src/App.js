@@ -7,7 +7,7 @@ var Fraction = require("fractional").Fraction;
 function App() {
   //console.log(new Fraction(1).multiply(6).toString());
 
-  const [multiplier, setMultiplier] = useState(0.5);
+  const [multiplier, setMultiplier] = useState(2);
   const [currentInput, setCurrentInput] = useState("");
   const [currentDisplay, setCurrentDisplay] = useState("edit");
   const [inputType, setInputType] = useState("link");
@@ -65,7 +65,9 @@ function App() {
       !parseInt(parsedRecipe.charAt(i + 2)) &&
       parsedRecipe.charAt(i - 1) !== "/"
         ? (parsedConverted += (
-            parseInt(parsedRecipe.charAt(i)) * multiplier
+            adjuster === "divide"
+              ? parseInt(parsedRecipe.charAt(i)) / multiplier
+              : parseInt(parsedRecipe.charAt(i)) * multiplier
           ).toFixed(1))
         : (parsedConverted += parsedRecipe.charAt(i));
     }
@@ -99,6 +101,7 @@ function App() {
         frac.add(
           new Fraction(parseInt(indexp2), parseInt(recipe.charAt([i + 4])))
         );
+        console.log(multiplier);
         adjuster === "divide"
           ? (frac = frac.divide(multiplier).toString())
           : (frac = frac.multiply(multiplier).toString());
