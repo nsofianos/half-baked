@@ -50,7 +50,9 @@ function App() {
         return (
           setConvertedRecipe(res),
           setLoadingRecipe("false"),
-          setCurrentDisplay("display")
+          setCurrentDisplay("display"),
+          setMultiplier(2),
+          setAdjuster("divide")
         );
       });
     } else {
@@ -58,6 +60,8 @@ function App() {
         setConvertedRecipe(convertRecipe(currentInput, adjuster, multiplier));
         setLoadingRecipe("false");
         setCurrentDisplay("display");
+        setMultiplier(2);
+        setAdjuster("divide");
       }, 2000);
     }
   };
