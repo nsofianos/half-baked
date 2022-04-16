@@ -33,6 +33,7 @@ function App() {
   const inputTypeHandler = (event) => {
     setCurrentInput("");
     setInputType(event.currentTarget.value);
+    setLoadingRecipe("false");
   };
 
   //sets the multiplier
