@@ -8,20 +8,14 @@ import {
   faSpinner,
 } from "@fortawesome/free-solid-svg-icons";
 import { faKeyboard } from "@fortawesome/free-regular-svg-icons";
-import { Container, Box } from "@mui/material";
 import "./EditRecipe.css";
 
 function EditRecipe(props) {
   return (
     <div className="main-container">
-      <Box
-        sx={{
-          alignItems: "center",
-          display: "flex",
-          flexDirection: "column",
-        }}
-      >
+      <div className="edit-container">
         {props.inputType === "link" ? (
+          // link input selected
           <div className="recipe-input-container">
             <Button
               value="manual"
@@ -41,6 +35,7 @@ function EditRecipe(props) {
             />
           </div>
         ) : (
+          // manual input selected
           <div className="recipe-input-container">
             <Button
               value="link"
@@ -63,7 +58,8 @@ function EditRecipe(props) {
           onAdjusterChange={props.adjusterHandler}
           onMultiplierChange={props.multiplierChangeHandler}
         />
-      </Box>
+      </div>
+
       <Button
         value={"display"}
         onClick={props.convertRecipeHandler}
