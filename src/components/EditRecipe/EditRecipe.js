@@ -19,7 +19,7 @@ function EditRecipe(props) {
           <div className="recipe-input-container">
             <Button
               value="manual"
-              className="change-input-type"
+              className="change-input-type-button"
               onClick={props.inputTypeHandler}
             >
               <FontAwesomeIcon
@@ -39,7 +39,7 @@ function EditRecipe(props) {
           <div className="recipe-input-container">
             <Button
               value="link"
-              className="change-input-type"
+              className="change-input-type-button"
               onClick={props.inputTypeHandler}
             >
               <FontAwesomeIcon icon={faLink} size="1x" className="icon-md" />

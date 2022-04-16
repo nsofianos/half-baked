@@ -1,7 +1,7 @@
 button {
   border: none;
-  color: #fff1e2;
-  background-color: #b4846c;
+  color: var(--color-dark);
+  background-color: var(--color-light);
   font-family: monospace;
   height: 40px;
   width: 80px;
@@ -11,7 +11,7 @@ button {
 
 button:hover {
   cursor: pointer;
-  background-color: #c2927a;
+  background-color: var(--color-accent);
   -webkit-transform: scale(1.1);
   -ms-transform: scale(1.1);
   transform: scale(1.1);
@@ -21,7 +21,8 @@ button:hover {
 }
 
 .selected {
-  background-color: #7d5a50;
+  background-color: var(--color-dark);
+  color: var(--color-light);
 }
 
 .selected:hover {
@@ -30,30 +31,4 @@ button:hover {
 
 .multiplier-button {
   width: 40px;
-}
-
-.convert-button {
-  background-color: #fce8d4;
-  margin-top: 0.5em;
-  color: #7d5a50;
-  width: 50px;
-  border-radius: 25px;
-  font-family: "Hubballi", cursive;
-  font-size: 18px;
-}
-
-.convert-button:hover {
-  background-color: #f5e0cc;
-}
-
-.change-input-type {
-  color: #7d5a50;
-  width: 40px;
-  background-color: #fff;
-  position: absolute;
-  left: -3.5em;
-}
-
-.change-input-type:hover {
-  background-color: #fff;
 }

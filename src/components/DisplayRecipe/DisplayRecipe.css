@@ -1,6 +1,18 @@
 .recipe-display-text {
   color: #ffeddb;
 }
+.recipe-display-container {
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: var(--color-neutral);
+  padding: 2em;
+  border-radius: 16px;
+  margin: auto;
+  margin-top: 10em;
+  box-shadow: 0px 0px 20px 0px #5c4640;
+}
 
 .recipe-display {
   word-wrap: break-word;
@@ -8,8 +20,8 @@
   line-height: 2;
   padding: 20px;
   border-radius: 12px;
-  background-color: #7d5a50;
-  color: #fce8d4;
+  background-color: var(--color-light);
+  color: var(--color-dark);
   white-space: pre-line;
   font-family: monospace;
   font-size: 14px;

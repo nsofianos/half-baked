@@ -104,7 +104,7 @@ function App() {
   return (
     <>
       <div className="logo-container">
-        <img alt="logo" src="/images/logo/default-monochrome.svg"></img>
+        <img alt="logo" src="/images/logo/darkdefault-monochrome.svg"></img>
       </div>
       {getDisplay(currentDisplay)}
     </>
