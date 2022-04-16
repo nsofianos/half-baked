@@ -1,12 +1,10 @@
 import DisplayRecipe from "./components/DisplayRecipe";
 import "./App.css";
 import { useState } from "react";
-import EditRecipe from "./components/EditRecipe";
+import EditRecipe from "./components/EditRecipe/EditRecipe";
 var Fraction = require("fractional").Fraction;
 
 function App() {
-  //console.log(new Fraction(1).multiply(6).toString());
-
   const [multiplier, setMultiplier] = useState(2);
   const [currentInput, setCurrentInput] = useState("");
   const [currentDisplay, setCurrentDisplay] = useState("edit");
@@ -56,21 +54,41 @@ function App() {
     }
   };
 
+  const checkNotFraction = (s, i) => {
+    return (
+      parseInt(s.charAt(i)) &&
+      !parseInt(s.charAt(i + 2)) &&
+      s.charAt(i - 1) !== "/"
+    );
+  };
   const convertRecipe = (recipe) => {
+    //convert unicode fractions to regular fractions
     let parsedRecipe = parseUnicodeFractions(recipe);
     let parsedConverted = "";
+
     for (let i = 0; i < parsedRecipe.length; i++) {
-      //if character is number & not part of a fraction, multiply by current multiplier
-      parseInt(parsedRecipe.charAt(i)) &&
-      !parseInt(parsedRecipe.charAt(i + 2)) &&
-      parsedRecipe.charAt(i - 1) !== "/"
-        ? (parsedConverted += (
+      //check if number is not part of a fraction
+      if (checkNotFraction(parsedRecipe, i)) {
+        //check if single or double digit
+        if (parseInt(parsedRecipe.charAt(i + 1))) {
+          parsedConverted +=
             adjuster === "divide"
-              ? parseInt(parsedRecipe.charAt(i)) / multiplier
-              : parseInt(parsedRecipe.charAt(i)) * multiplier
-          ).toFixed(1))
-        : (parsedConverted += parsedRecipe.charAt(i));
+              ? parseInt(parsedRecipe.charAt(i) + parsedRecipe.charAt(i + 1)) /
+                multiplier
+              : parseInt(parsedRecipe.charAt(i) + parsedRecipe.charAt(i + 1)) *
+                multiplier;
+          i++;
+        } else {
+          parsedConverted +=
+            adjuster === "divide"
+              ? Math.round(
+                  ((parseInt(parsedRecipe.charAt(i)) / multiplier) * 10) / 10
+                )
+              : parseInt(parsedRecipe.charAt(i)) * multiplier;
+        }
+      } else parsedConverted += parsedRecipe.charAt(i);
     }
+
     let parsedConvertedWithFractions = convertFractions(parsedConverted);
     return parsedConvertedWithFractions.replace(/\n\s*\n/g, "\n");
   };
@@ -101,13 +119,13 @@ function App() {
         frac = frac.add(
           new Fraction(parseInt(indexp2), parseInt(recipe.charAt([i + 4])))
         );
-        console.log("YO");
         adjuster === "divide"
           ? (frac = frac.divide(multiplier).toString())
           : (frac = frac.multiply(multiplier).toString());
         converted += frac;
         i += 4;
-      } else if (parseInt(curIndex) && indexp1 === "/" && parseInt(indexp2)) {
+      } //else if fraction, multiply/divide and skip index forward
+      else if (parseInt(curIndex) && indexp1 === "/" && parseInt(indexp2)) {
         let frac = new Fraction(parseInt(curIndex), parseInt(indexp2));
         adjuster === "divide"
           ? (frac = frac.divide(multiplier).toString())

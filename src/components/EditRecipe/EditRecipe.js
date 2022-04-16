@@ -1,6 +1,6 @@
-import Adjuster from "./Adjuster";
-import Textarea from "./UI/Textarea";
-import Button from "./UI/Button";
+import Adjuster from "../../components/Adjuster";
+import Textarea from "../../components/UI/Textarea";
+import Button from "../../components/UI/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faLink,
@@ -13,21 +13,7 @@ import "./EditRecipe.css";
 
 function EditRecipe(props) {
   return (
-    <Container
-      component="main"
-      maxWidth="sm"
-      sx={{
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "center",
-        alignItems: "center",
-        backgroundColor: "#FFFFFF",
-        p: 4,
-        borderRadius: 4,
-        mt: 24,
-        mb: 5,
-      }}
-    >
+    <div className="main-container">
       <Box
         sx={{
           alignItems: "center",
@@ -88,7 +74,7 @@ function EditRecipe(props) {
           icon={props.loadingRecipe === "true" ? faSpinner : faAnglesRight}
         />
       </Button>
-    </Container>
+    </div>
   );
 }
 
