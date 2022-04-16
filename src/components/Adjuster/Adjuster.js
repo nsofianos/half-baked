@@ -1,7 +1,7 @@
 import "./Adjuster.css";
-import Divider from "./Divider";
-import Multiplier from "./Multiplier";
-import ButtonGroup from "./UI/ButtonGroup";
+import Divider from "../Multipliers/Divider";
+import Multiplier from "../Multipliers/Multiplier";
+import ButtonGroup from "../UI/ButtonGroup";
 
 function Adjuster(props) {
   const adjusterButtons = [

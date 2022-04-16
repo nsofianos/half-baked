@@ -1,5 +1,5 @@
-import ButtonGroup from "./UI/ButtonGroup";
-import { multiplierValues } from "../data/multiplierData";
+import ButtonGroup from "../UI/ButtonGroup";
+import { multiplierValues } from "../../data/multiplierData";
 
 function Multiplier(props) {
   return (

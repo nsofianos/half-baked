@@ -1,6 +1,6 @@
-import Adjuster from "../../components/Adjuster";
-import Textarea from "../../components/UI/Textarea";
-import Button from "../../components/UI/Button";
+import Adjuster from "../Adjuster/Adjuster";
+import Textarea from "../UI/Textarea";
+import Button from "../UI/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faLink,

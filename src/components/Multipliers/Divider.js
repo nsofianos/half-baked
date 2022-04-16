@@ -1,5 +1,5 @@
-import ButtonGroup from "./UI/ButtonGroup";
-import { dividerValues } from "../data/multiplierData";
+import ButtonGroup from "../UI/ButtonGroup";
+import { dividerValues } from "../../data/multiplierData";
 
 function Divider(props) {
   return (

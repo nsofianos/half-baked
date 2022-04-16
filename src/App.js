@@ -1,4 +1,4 @@
-import DisplayRecipe from "./components/DisplayRecipe";
+import DisplayRecipe from "./components/DisplayRecipe/DisplayRecipe";
 import "./App.css";
 import { useState } from "react";
 import EditRecipe from "./components/EditRecipe/EditRecipe";
