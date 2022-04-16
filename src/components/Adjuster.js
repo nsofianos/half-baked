@@ -1,5 +1,4 @@
 import "./Adjuster.css";
-import { Box } from "@mui/material";
 import Divider from "./Divider";
 import Multiplier from "./Multiplier";
 import ButtonGroup from "./UI/ButtonGroup";
@@ -28,16 +27,9 @@ function Adjuster(props) {
   };
 
   return (
-    <Box
-      sx={{
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        m: 1,
-      }}
-    >
+    <div className="adjuster-container">
       <p>i want to..</p>
-
+      {/* divide/multiply */}
       <ButtonGroup
         className="adjuster-button-group"
         buttons={adjusterButtons}
@@ -45,13 +37,13 @@ function Adjuster(props) {
       ></ButtonGroup>
 
       <p>by..</p>
-
+      {/* multiplier */}
       {getAdjuster(
         props.currentAdjuster,
         props.currentMultiplier,
         props.onMultiplierChange
       )}
-    </Box>
+    </div>
   );
 }
 

@@ -60,6 +60,7 @@ function EditRecipe(props) {
         />
       </div>
 
+      {/* display recipe button */}
       <Button
         value={"display"}
         onClick={props.convertRecipeHandler}
