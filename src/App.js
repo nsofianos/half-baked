@@ -31,6 +31,7 @@ function App() {
 
   //link/manual input toggle
   const inputTypeHandler = (event) => {
+    setCurrentInput("");
     setInputType(event.currentTarget.value);
   };
 
@@ -75,6 +76,7 @@ function App() {
           loadingRecipe={loadingRecipe}
           adjuster={adjuster}
           adjusterHandler={adjusterHandler}
+          currentInput={currentInput}
         />
       );
     else

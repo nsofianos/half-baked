@@ -29,6 +29,7 @@ function EditRecipe(props) {
               />
             </Button>
             <Textarea
+              value={props.currentInput}
               className="recipe-input"
               placeholder="paste link to recipe"
               onChange={props.inputChangeHandler}
@@ -45,6 +46,7 @@ function EditRecipe(props) {
               <FontAwesomeIcon icon={faLink} size="1x" className="icon-md" />
             </Button>
             <Textarea
+              value={props.currentInput}
               className="recipe-input"
               placeholder="paste recipe here"
               onChange={props.inputChangeHandler}

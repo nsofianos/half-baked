@@ -11,8 +11,9 @@ img {
 p {
   font-size: 1.2em;
   margin: 0.5em;
-  color: #ffe9e3;
+  color: #fdedde;
   font-family: "Hubballi", cursive;
+  font-weight: bold;
 }
 
 .icon {
