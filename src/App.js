@@ -16,7 +16,12 @@ function App() {
   //divide/multiply toggle
   const adjusterHandler = (event) => {
     let newAdjuster = event.target.value;
-    if (newAdjuster !== null) setAdjuster(newAdjuster);
+
+    //reset multiplier if adjuster changes
+    if (newAdjuster !== adjuster) {
+      newAdjuster === "divide" ? setMultiplier(2) : setMultiplier(1.5);
+    }
+    setAdjuster(newAdjuster);
   };
 
   //keep track of text input
