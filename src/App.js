@@ -42,7 +42,7 @@ function App() {
     if (multiplier !== null) setMultiplier(multiplier);
   };
 
-  //check input type, create loading effect, convert recipe, change display
+  //check input type, create loading effect, convert recipe, change display, reset state
   const convertRecipeHandler = (event) => {
     setLoadingRecipe("true");
     if (inputType === "link") {

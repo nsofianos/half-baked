@@ -65,7 +65,10 @@ export const convertRecipe = (recipe, adjuster, multiplier) => {
     //check if number is not part of a fraction
     if (checkNotFraction(parsedRecipe, i)) {
       //check if single or double digit
-      if (parseInt(parsedRecipe.charAt(i + 1))) {
+      if (
+        parseInt(parsedRecipe.charAt(i + 1)) ||
+        parsedRecipe.charAt(i + 1) === "0"
+      ) {
         parsedConverted +=
           adjuster === "divide"
             ? parseInt(parsedRecipe.charAt(i) + parsedRecipe.charAt(i + 1)) /
@@ -76,9 +79,7 @@ export const convertRecipe = (recipe, adjuster, multiplier) => {
       } else {
         parsedConverted +=
           adjuster === "divide"
-            ? Math.round(
-                ((parseInt(parsedRecipe.charAt(i)) / multiplier) * 10) / 10
-              )
+            ? parseInt(parsedRecipe.charAt(i)) / multiplier
             : parseInt(parsedRecipe.charAt(i)) * multiplier;
       }
     } else parsedConverted += parsedRecipe.charAt(i);
