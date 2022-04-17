@@ -71,15 +71,19 @@ export const convertRecipe = (recipe, adjuster, multiplier) => {
       ) {
         parsedConverted +=
           adjuster === "divide"
-            ? parseInt(parsedRecipe.charAt(i) + parsedRecipe.charAt(i + 1)) /
-              multiplier
+            ? Math.round(
+                (parseInt(parsedRecipe.charAt(i) + parsedRecipe.charAt(i + 1)) /
+                  multiplier) *
+                  10
+              ) / 10
             : parseInt(parsedRecipe.charAt(i) + parsedRecipe.charAt(i + 1)) *
               multiplier;
         i++;
       } else {
         parsedConverted +=
           adjuster === "divide"
-            ? parseInt(parsedRecipe.charAt(i)) / multiplier
+            ? Math.round((parseInt(parsedRecipe.charAt(i)) / multiplier) * 10) /
+              10
             : parseInt(parsedRecipe.charAt(i)) * multiplier;
       }
     } else parsedConverted += parsedRecipe.charAt(i);
